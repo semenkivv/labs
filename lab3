@@ -1,0 +1,55 @@
+package com.company;
+//11 34 3
+public class Main {
+    public static void main(String[] args) {
+
+        task1();
+        task2();
+        task3();
+
+    }
+
+    // Дана непустая строка S. Вывести строку, содержащую символы строки S, между которыми вставлено по одному пробелу.
+    public static void task1() {
+        String S = new String("$&&#hGhS");
+        S.replaceAll(".(?=.)", "$0 ");
+        System.out.println(S);
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < S.length(); i++) {
+            if (i > 0) {
+                result.append(" ");
+            }
+
+            result.append(S.charAt(i));
+        }
+
+        System.out.println(result.toString());
+    }
+
+    //Даны строки S и S0. Удалить из строки S первую подстроку, совпадающую с S0. Если совпадающих подстрок нет, то вывести строку S без изменений.
+    public static void task2() {
+        String S = new String("Жизнь дется лишь единожды и она прекрасна");
+        String S0 = new String("Жизнь");
+        System.out.println(S);
+        System.out.println(S0);
+        int SLength = S.length();
+        int S0Length = S0.length();
+        boolean foundIt = false;
+        for (int i = 0; i <= (SLength - S0Length); i++) {
+            if (S.regionMatches(i, S0, 0, S0Length)) {
+                foundIt = true;
+                System.out.println("Найденная подстрока: " + S.substring(i, i + S0Length));
+                break;
+            }
+        }
+        if (!foundIt)
+            System.out.println("Не найдено.");
+    }
+
+
+//    Дан символ C. Вывести два символа, первый из которых предшествует символу C в кодовой таблице, а второй следует за символом C.
+    public static void task3() {
+        char charC = 'c';
+        System.out.printf("Символ \'%c\' перед ним %c после него %c", charC, (char) (charC - 1), (char) (charC + 1));
+    }
+}
